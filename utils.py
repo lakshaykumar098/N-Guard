@@ -32,7 +32,7 @@ def block_ip(ip):
         print(f"Error blocking IP {ip}: {e}")
 
 
-VIRUSTOTAL_API_KEY = "e96a565a4ed55392fab6431b139ef8e851a8c38fe1039f85aeae3e80101a2ed3"
+VIRUSTOTAL_API_KEY = "Your_Api_Key" # Add your VirusTotal Api Key Here
 
 def check_ip_with_virustotal(ip):
     """
