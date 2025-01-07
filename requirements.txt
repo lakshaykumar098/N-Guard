@@ -2,4 +2,6 @@ scapy==2.4.5       # For packet sniffing and network traffic analysis
 requests==2.31.0   # For VirusTotal API integration
 sqlite3            # For SQLite database management
 time               # For tracking timing in detection methods
-subprocess         # For executing system commands (e.g., Windows Firewall)
+subprocess         # For executing system command and saving output as string
+os                 # For executing system commands (e.g., Windows Firewall)
+
