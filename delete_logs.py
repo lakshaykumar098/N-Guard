@@ -38,6 +38,6 @@ def delete_logs():
     finally:
         if conn:
             conn.close()
-
+# Main entry Point
 if __name__ == "__main__":
     delete_logs()
