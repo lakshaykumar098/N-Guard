@@ -27,7 +27,7 @@ def detect_syn_flood(packet):
         syn_tracker[src_ip].append(current_time)
         syn_tracker[src_ip] = [t for t in syn_tracker[src_ip] if current_time - t < 2]
 
-        if len(syn_tracker[src_ip]) > 50: # update it to 100
+        if len(syn_tracker[src_ip]) > 100:
             return "DDoS Attack: SYN Flood Detected"
     return None
 
@@ -45,7 +45,7 @@ def detect_ack_flood(packet):
         ack_tracker[src_ip].append(current_time)
         ack_tracker[src_ip] = [t for t in ack_tracker[src_ip] if current_time - t < 2]
 
-        if len(ack_tracker[src_ip]) > 50: # update it to 100
+        if len(ack_tracker[src_ip]) > 100: 
             return "DDoS Attack: ACK Flood Detected"
     return None
 
@@ -64,7 +64,7 @@ def detect_port_scan(packet):
         port_scan_tracker[src_ip].append((dst_port, current_time))
         port_scan_tracker[src_ip] = [(p, t) for p, t in port_scan_tracker[src_ip] if current_time - t < 5]
 
-        if len(set(p for p, t in port_scan_tracker[src_ip])) > 5: # update it to 10
+        if len(set(p for p, t in port_scan_tracker[src_ip])) > 10: 
             return "Port Scanning Attempt Detected"
     return None
 
@@ -82,7 +82,7 @@ def detect_icmp_flood(packet):
         icmp_tracker[src_ip].append(current_time)
         icmp_tracker[src_ip] = [t for t in icmp_tracker[src_ip] if current_time - t < 2]
 
-        if len(icmp_tracker[src_ip]) > 50: #Update it to 200
+        if len(icmp_tracker[src_ip]) > 200: 
             return "DDoS Attack: ICMP Flood Detected"
     return None
 
@@ -122,7 +122,7 @@ def detect_dns_amplification(packet):
         dns_tracker[src_ip].append(current_time)
         dns_tracker[src_ip] = [t for t in dns_tracker[src_ip] if current_time - t < 2]
 
-        if len(dns_tracker[src_ip]) > 20: # update it to 50
+        if len(dns_tracker[src_ip]) > 50: 
             return "DNS Amplification Attack Detected"
     return None
 
@@ -140,7 +140,7 @@ def detect_http_flood(packet):
         http_tracker[src_ip].append(current_time)
         http_tracker[src_ip] = [t for t in http_tracker[src_ip] if current_time - t < 2]
 
-        if len(http_tracker[src_ip]) > 20: # update it to 50
+        if len(http_tracker[src_ip]) > 50:
             return "DDoS Attack: HTTP Flood Detected"
     return None
 
@@ -158,7 +158,7 @@ def detect_brute_force_login(packet):
         login_attempt_tracker[src_ip].append(current_time)
         login_attempt_tracker[src_ip] = [t for t in login_attempt_tracker[src_ip] if current_time - t < 10]
 
-        if len(login_attempt_tracker[src_ip]) > 3: # update it to 5
+        if len(login_attempt_tracker[src_ip]) > 5: 
             return "Brute Force Login Attempt Detected"
     return None
 
@@ -175,7 +175,7 @@ def detect_reverse_shell(packet):
         src_ip = packet[IP].src
         current_time = time.time()
         reverse_shell_tracker[src_ip].append(current_time)
-        reverse_shell_tracker[src_ip] = [t for t in reverse_shell_tracker[src_ip] if current_time - t < 5] # update it to 10
+        reverse_shell_tracker[src_ip] = [t for t in reverse_shell_tracker[src_ip] if current_time - t < 10] 
 
         if len(reverse_shell_tracker[src_ip]) > 2: 
             return "Reverse Shell Detected"
