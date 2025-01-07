@@ -35,7 +35,7 @@ def start_sniffer():
     Starts the packet sniffer to monitor network traffic.
     """
     print("Starting packet sniffer... Press Ctrl+C to stop.")
-    sniff(iface="eth0", filter="ip", prn=process_packet)
+    sniff(iface="eth0", filter="ip", prn=process_packet) # Captues each IP packet on eth0 interface and pass it to process_packet function
 
 
 if __name__ == "__main__":
