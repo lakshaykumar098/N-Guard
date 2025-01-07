@@ -50,9 +50,9 @@ def send_email_alert(src_ip, alert):
     """
     Sends an email alert for a detected threat.
     """
-    sender = "crushtheskull404@gmail.com"  # Replace with your email
-    receiver = "lakshaythakur7428@gmail.com"  # Replace with the recipient email
-    password = "nomz kpnb ouro vwin"  # Replace with your App Password (not your email password)
+    sender = "example@gmail.com"  # Replace with your email
+    receiver = "recipient@gmail.com"  # Replace with the recipient email
+    password = "Your_App_Password"  # Replace with your App Password (not your email password)
 
     # Email content
     message = MIMEText(
