@@ -2,17 +2,21 @@ import os
 import requests
 import subprocess
 
+
 def is_ip_blocked(ip):
     """
     Checks if an IP is already blocked in iptables.
     """
     try:
+
         # List iptables rules and search for the IP
         result = subprocess.check_output(["sudo", "iptables", "-L", "-v", "-n"], text=True)
         return ip in result
+
     except Exception as e:
         print(f"Error checking iptables for IP {ip}: {e}")
         return False
+
 
 def block_ip(ip):
     """
@@ -21,6 +25,7 @@ def block_ip(ip):
     """
 
     try:
+
         # Add the rule to block the IP
         os.system(f"sudo iptables -A INPUT -s {ip} -j DROP")
         print(f"Blocked IP: {ip}")
@@ -32,12 +37,11 @@ def block_ip(ip):
         print(f"Error blocking IP {ip}: {e}")
 
 
-VIRUSTOTAL_API_KEY = "Your_Api_Key" # Add your VirusTotal Api Key Here
-
 def check_ip_with_virustotal(ip):
     """
     Checks the reputation of an IP address using the VirusTotal API.
     """
+    VIRUSTOTAL_API_KEY = "e96a565a4ed55392fab6431b139ef8e851a8c38fe1039f85aeae3e80101a2ed3"
     url = f"https://www.virustotal.com/api/v3/ip_addresses/{ip}"
     headers = {"x-apikey": VIRUSTOTAL_API_KEY}
     response = requests.get(url, headers=headers)
