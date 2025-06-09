@@ -1,4 +1,4 @@
-# Intrusion Detection and Prevention System (IDS/IPS)
+# N-Guard (Intrusion Detection and Prevention System)
 
 Welcome to **N-Guard** – a robust Python-based Intrusion Detection and Prevention System (IDS/IPS) designed to monitor, detect, and respond to malicious activities within your network.
 
@@ -14,13 +14,13 @@ Welcome to **N-Guard** – a robust Python-based Intrusion Detection and Prevent
 
 ## **Project Structure**
 
-```plaintext
+```
 N-Guard/
 |
-├── detection.py         # Core detection functions for network attacks
-├── ids.py               # Main script to run the IDS and sniff packets
+├── ids.py               # Core detection functions for network attacks
+├── main.py              # Main script to run the N-Guard and sniff packets
 ├── logger.py            # Handles alert logging and email notifications
-├── utils.py             # Utility functions (e.g., IP blocking, VirusTotal lookup)
+├── ips.py               # Core prevention function, responsible for blocking malicious IPs
 ├── delete_logs.py       # Script to clear or delete logs from the database
 ├── read_logs.py         # Script to read and display logs from the database
 ├── requirements.txt     # Dependencies required for the project
@@ -77,9 +77,9 @@ Make sure your system meets the following requirements:
 ### **Running the IDS**
 
 1. Ensure you have root access.
-2. Start the IDS by running:
+2. Start the N-Guard by running:
    ```bash
-   sudo python3 ids.py
+   sudo python3 main.py
    ```
 3. Press `Ctrl+C` to stop the packet sniffer.
 
@@ -103,7 +103,7 @@ python3 delete_logs.py
 
 ## **Threats Detected**
 
-The IDS/IPS can detect the following types of network attacks:
+The N-Guard can detect the following types of network attacks:
 
 | **Attack Type**         | **Description**                                     |
 | ----------------------- | --------------------------------------------------- |
@@ -116,7 +116,10 @@ The IDS/IPS can detect the following types of network attacks:
 | XMAS Scan               | Detects scans using packets with all flags set.     |
 | TCP Null Scan           | Detects scans using TCP packets with no flags.      |
 | Reverse Shell Detection | Detects outbound reverse shell connections.         |
-| Brute Force Login       | Detects repeated failed login attempts (e.g., SSH). |
+| SSH Brute Force Login   | Detects repeated failed SSH login attempts.         |
+| Telnet Brute Force Login| Detects repeated failed Telnet login attempts.      |
+| FTP Brute Force Login   | Detects repeated failed FTP login attempts.         |
+| SMB Brute Force Login   | Detects repeated failed SMB login attempts.         |
 | Malformed Packets       | Detects packets with unusual structures.            |
 
 ---
